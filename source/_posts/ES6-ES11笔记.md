@@ -1,3 +1,16 @@
+---
+
+title: ES6-ES11笔记
+date: 2023-07-04 17:25
+updated: 2023-07-04 17:25
+tags: JS ES6
+categories: JS 
+keywords: ES6
+description: ES6 学习笔记
+cover: 
+
+---
+
 ### 1.let
 1、变量不能重<font color="#2DC26B">复声明  </font>
 
