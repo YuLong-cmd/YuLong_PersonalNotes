@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
-    <url>/2023/06/23/ES6-ES11%E7%AC%94%E8%AE%B0/</url>
+    <title>ES6-ES11笔记</title>
+    <url>/2023/07/04/ES6-ES11%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="1-let"><a href="#1-let" class="headerlink" title="1.let"></a>1.let</h3><p>1、变量不能重<font color="#2DC26B">复声明  </font></p>
 <p>2、块级<font color="#2DC26B">作用域  </font></p>
 <p>3、<font color="#2DC26B">不存在变量提升</font>  </p>
@@ -82,23 +82,59 @@
 <li>hexo init “鱼有个梦想的个人博客” # 目录名称不含空格的时候双引号可以省略<br>![[Pasted image 20230618162528.png]]</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>JS</category>
+      </categories>
+      <tags>
+        <tag>JS ES6</tag>
+      </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2023/06/17/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>常用</title>
+    <url>/2023/07/04/%E5%B8%B8%E7%94%A8/</url>
+    <content><![CDATA[<h3 id="1-git"><a href="#1-git" class="headerlink" title="1.git"></a>1.git</h3><p>1.添加子模块<br>git submodule add <a href="https://github.com/YuLong-cmd/hexo-theme-butterfly.git">https://github.com/YuLong-cmd/hexo-theme-butterfly.git</a>   butterfly</p>
+<ol>
+<li>新增子模块<br>向一个项目中添加子模块</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git submodule add https://github.com/yyy/xxx.git</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>之后会 clone 该子模块对应的远程项目文件到本地父项目目录下的同名文件夹中（.&#x2F;xxx&#x2F;），父项目下也会多一个叫 .gitmodules 的文件，内容大致为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[submodule &quot;xxx&quot;]</span><br><span class="line">	path = xxx</span><br><span class="line">	url = git@github.com:yyy/xxx.git</span><br></pre></td></tr></table></figure>
+<p>如果存在多个子模块，则会继续向该文件中追加与上面相同格式的内容；</p>
+<p>同时父项目下的 .git 目录中也会新增 &#x2F;modules&#x2F;xxx&#x2F; 目录，里面的内容对应子模块仓库中原有的 .git 目录中的文件，此时虽然子模块目录下的 .git 依然存在，但是已经由一个文件夹变成了文件，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gitdir: ../.git/modules/xxx</span><br></pre></td></tr></table></figure>
+<p>即指向了父项目的 .git&#x2F;modules&#x2F;xxx 目录；如果运行 git config –list 查看项目的配置，也会发现多了类似下面两行的内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">submodule.xxx.url=git@github.com:yyy/xxx.git</span><br><span class="line">submodule.xxx.active=true</span><br></pre></td></tr></table></figure>
+<p>如果修改 submodule.xxx.url 的值，则会覆盖 .gitmodules 文件中对应的 url 值；</p>
 ]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>图床</title>
+    <url>/2023/07/04/%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<h3 id="1-下载PicGo-PicGo"><a href="#1-下载PicGo-PicGo" class="headerlink" title="1.下载PicGo PicGo"></a>1.下载PicGo PicGo</h3><p>下载地址: <a href="https://github.com/Molunerfinn/picgo/releases">https://github.com/Molunerfinn/picgo/releases</a></p>
+<h3 id="2-创建GitHub仓库"><a href="#2-创建GitHub仓库" class="headerlink" title="2.创建GitHub仓库"></a>2.创建GitHub仓库</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOEIH.png"><br>点自己头像，点Setting<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOx0S.png"></p>
+<p>再点Developer settings<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOzTg.jpg"></p>
+<p>再点Personal access tokens<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXpkQ.png"></p>
+<p>填写内容，记得勾选repo<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXCfs.png"></p>
+<p>复制生成的token,（再关闭网页这个token就没法复制了）</p>
+<h3 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/20230704220025.png"></p>
+<h3 id="加速访问"><a href="#加速访问" class="headerlink" title="加速访问"></a>加速访问</h3><p>大家可能会发现，我们上传到 Github 的图片有时候访问太慢了，有时候甚至直接加载不出来！那该咋办呢？</p>
+<p>这时候我们就可以用 <a href="https://link.zhihu.com/?target=https://www.jsdelivr.com/">jsDelivr</a> 进行免费加速，而设置的方法也很简单，只需要在我们 PicGo 图床配置中添加如下自定义域名即可；</p>
+<blockquote>
+<p><code>https://cdn.jsdelivr.net/gh/用户名/仓库名</code></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
   </entry>
 </search>
