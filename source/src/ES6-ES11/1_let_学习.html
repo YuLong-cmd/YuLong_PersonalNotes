@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>let</title>
+  </head>
+  <body>
+    <script>
+      //声明变量
+      let a;
+      let b, c, d;
+      let e = 100;
+      let f = 1,
+        g = 6,
+        h = "7865456";
+
+      // 1. 变量不能重复声明
+      // let star ="aaa";
+      // let star="66";
+
+      // 2.块儿级作用域 全局，函数，eval
+      // {
+      //     let girt ='aaa';
+      // }
+      // console.log(girt);
+
+      // 3.不存在变量提升
+      // console.log(song);
+      // let song = 'er';
+
+      // 4.不影响作用域链
+      {
+        let school ='yuLong';
+        function fn() {
+            console.log(school);
+        }
+        fn();
+      }
+    </script>
+  </body>
+</html>

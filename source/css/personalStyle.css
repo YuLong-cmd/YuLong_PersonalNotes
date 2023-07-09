@@ -1,0 +1,206 @@
+[data-theme="dark"] *{
+  color: #ffffff;
+}
+
+/* 页脚透明 */
+#footer {
+  background: transparent !important;
+}
+
+/* 头图透明 */
+/* #page-header {
+    background: transparent !important;
+} */
+
+/*top-img黑色透明玻璃效果移除，不建议加，除非你执着于完全一图流或者背景图对比色明显 */
+/* #page-header.post-bg:before {
+    background-color: transparent !important;
+} */
+
+/*夜间模式伪类遮罩层透明*/
+[data-theme="dark"] #footer::before {
+  background: transparent !important;
+}
+
+[data-theme="dark"] #page-header::before {
+  background: transparent !important;
+}
+
+/* #body-wrap { */
+/* background-image: url("https://ae01.alicdn.com/kf/H18a4b998752a4ae68b8e85d432a5aef0l.png"),
+    linear-gradient(60deg, rgba(255, 165, 150, 0.5) 5%, rgba(0, 228, 255, 0.35)),
+    url("../img/hk.jpeg"); */
+/* 背景图像不重复 */
+/* background-repeat: no-repeat; */
+/* 背景图像大小 */
+/* background-size: cover; */
+/* } */
+
+/*侧边栏的个人信息的背景设置*/
+#aside-content > .card-widget.card-info {
+  /*换成自己图片的地址*/
+  background-image: url("../img/asid_img.jpg");
+  background-repeat: no-repeat;
+  background-attachment: inherit;
+  /* background-size: 100% */
+}
+/*黑暗主题下的配置*/
+[data-theme="dark"] #aside-content > .card-widget.card-info {
+  /*换成自己图片的地址*/
+  background-image: url("../img/asid_img_dark.jpg") !important;
+}
+
+/* 背景宇宙星光  */
+[data-theme="dark"] #universe {
+  display: block;
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* 鼠标样式 */
+body {
+  cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/default.cur),
+    default;
+}
+a,
+img {
+  cursor: url(https://cdn.jsdelivr.net/gh/sviptzk/HexoStaticFile@latest/Hexo/img/pointer.cur),
+    default;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background-color: rgba(73, 177, 245, 0.2);
+  border-radius: 2em;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #49b1f5;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.4) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.4) 75%,
+    transparent 75%,
+    transparent
+  );
+  border-radius: 2em;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
+::-moz-selection {
+  color: #fff;
+  background-color: #49b1f5;
+}
+
+/* 导航菜单的修改 */
+#nav-right {
+  flex: 1 1 auto;
+  justify-content: flex-end;
+  margin-left: auto;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+#web_bg {
+  position: fixed;
+  z-index: -999;
+  width: 100%;
+  height: 100%;
+  /* background: url(https://w.wallhaven.cc/full/rr/wallhaven-rr2wmm.png); */
+  background: url("https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/wallhaven-rr2wmm.png");
+  background-attachment: local;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* 设置文本的透明度 */
+
+/* 文章页背景 */
+.layout_post > #post {
+  /* 以下代表透明度为0.7 可以自行修改*/
+  background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .layout_post > #post {
+  /* 以下代表透明度为0.7 可以自行修改*/
+  background: rgba(255, 255, 255, 1);
+}
+/* 所有页面背景 */
+#aside_content .card-widget,
+#recent-posts > .recent-post-item,
+.layout_page > div:first-child:not(.recent-posts),
+.layout_post > #page,
+.layout_post > #post,
+.read-mode .layout_post > #post {
+  /* 以下代表透明度为0.7 */
+  background: rgba(255, 255, 255, 0.7);
+}
+/*侧边卡片的透明度 */
+:root {
+  --card-bg: rgba(255, 255, 255, 0.7);
+}
+/* 页脚透明 */
+#footer {
+  /* 以下代表透明度为0.7 */
+  background: rgba(255, 255, 255, 0);
+}
+
+/* 设置顶部的 透明度 */
+#page-header {
+  background: transparent !important;
+}
+
+/* 每日一言的调整 */
+/* 每日一言打字机效果 */
+#hitokoto {
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgb(43, 52, 82); */
+}
+#hitokoto_text {
+  font-family: "fangsong";
+  display: inline-block;
+  position: relative;
+  font-size: 1.5em;
+  height: 30px;
+  line-height: 30px;
+  color: rgb(245, 245, 245);
+}
+#hitokoto_text::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 5px;
+  height: 1.2em;
+  width: 3px;
+  background-color: #fff;
+  animation: san 0.5s steps(1) infinite;
+}
+@keyframes san {
+  0%,
+  100% {
+    background-color: #fff;
+  }
+  50% {
+    background-color: transparent;
+  }
+}

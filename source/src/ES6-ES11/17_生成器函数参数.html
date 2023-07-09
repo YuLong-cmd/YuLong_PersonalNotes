@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>生成器函数参数</title>
+  </head>
+  <body>
+    <script>
+      function* gen(arg) {
+        console.log(arg);
+        let one = yield 111;
+        console.log(one);
+        let two = yield 222;
+        console.log(two);
+        let three = yield 333;
+        console.log(three);
+      }
+
+      //   执行获取迭代器对象
+      let iterator = gen("aaa");
+      console.log(iterator.next());
+
+      //   next 方法可以传入实参   *从第二个起 作为上一个整体的返回值
+      console.log(iterator.next("BBB"));
+      console.log(iterator.next("CCC"));
+      console.log(iterator.next("DDD"));
+    </script>
+  </body>
+</html>

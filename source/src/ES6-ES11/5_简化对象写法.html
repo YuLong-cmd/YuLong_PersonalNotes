@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简化对象写法</title>
+</head>
+<body>
+    <script>
+        // ES6 允许在大括号里面，直接写入变量核函数，作为对象的属性和方法. 这样的书写更加的简洁
+
+        let name ='光锥';
+        let chang = function() {
+            console.log('光锥之内皆是命运');
+        }
+
+        const school ={
+            name,
+            chang,
+            impove(){
+                console.log('超越光锥才能超越命运');
+            }
+        }
+
+     /*
+     等价于
+         const school ={
+            naem:name,
+            chang:chang,
+            impove:function(){
+                console.log('超越光锥才能超越命运');
+            }
+        }
+     */
+
+     console.log(school);
+    </script>
+</body>
+</html>

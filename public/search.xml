@@ -90,6 +90,29 @@
       </tags>
   </entry>
   <entry>
+    <title>图床</title>
+    <url>/2023/07/04/%E5%9B%BE%E5%BA%8A/</url>
+    <content><![CDATA[<h3 id="1-下载PicGo-PicGo"><a href="#1-下载PicGo-PicGo" class="headerlink" title="1.下载PicGo PicGo"></a>1.下载PicGo PicGo</h3><p>下载地址: <a href="https://github.com/Molunerfinn/picgo/releases">https://github.com/Molunerfinn/picgo/releases</a></p>
+<h3 id="2-创建GitHub仓库"><a href="#2-创建GitHub仓库" class="headerlink" title="2.创建GitHub仓库"></a>2.创建GitHub仓库</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOEIH.png"><br>点自己头像，点Setting<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOx0S.png"></p>
+<p>再点Developer settings<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOzTg.jpg"></p>
+<p>再点Personal access tokens<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXpkQ.png"></p>
+<p>填写内容，记得勾选repo<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXCfs.png"></p>
+<p>复制生成的token,（再关闭网页这个token就没法复制了）</p>
+<h3 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/20230704220025.png"></p>
+<h3 id="加速访问"><a href="#加速访问" class="headerlink" title="加速访问"></a>加速访问</h3><p>大家可能会发现，我们上传到 Github 的图片有时候访问太慢了，有时候甚至直接加载不出来！那该咋办呢？</p>
+<p>这时候我们就可以用 <a href="https://link.zhihu.com/?target=https://www.jsdelivr.com/">jsDelivr</a> 进行免费加速，而设置的方法也很简单，只需要在我们 PicGo 图床配置中添加如下自定义域名即可；</p>
+<blockquote>
+<p><code>https://cdn.jsdelivr.net/gh/用户名/仓库名</code></p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>GitHub</category>
+      </categories>
+      <tags>
+        <tag>GitHub</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>常用</title>
     <url>/2023/07/04/%E5%B8%B8%E7%94%A8/</url>
     <content><![CDATA[<h3 id="1-git"><a href="#1-git" class="headerlink" title="1.git"></a>1.git</h3><p>1.添加子模块<br>git submodule add <a href="https://github.com/YuLong-cmd/hexo-theme-butterfly.git">https://github.com/YuLong-cmd/hexo-theme-butterfly.git</a>   butterfly</p>
@@ -106,29 +129,6 @@
 <p>即指向了父项目的 .git&#x2F;modules&#x2F;xxx 目录；如果运行 git config –list 查看项目的配置，也会发现多了类似下面两行的内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">submodule.xxx.url=git@github.com:yyy/xxx.git</span><br><span class="line">submodule.xxx.active=true</span><br></pre></td></tr></table></figure>
 <p>如果修改 submodule.xxx.url 的值，则会覆盖 .gitmodules 文件中对应的 url 值；</p>
-]]></content>
-      <categories>
-        <category>GitHub</category>
-      </categories>
-      <tags>
-        <tag>GitHub</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>图床</title>
-    <url>/2023/07/04/%E5%9B%BE%E5%BA%8A/</url>
-    <content><![CDATA[<h3 id="1-下载PicGo-PicGo"><a href="#1-下载PicGo-PicGo" class="headerlink" title="1.下载PicGo PicGo"></a>1.下载PicGo PicGo</h3><p>下载地址: <a href="https://github.com/Molunerfinn/picgo/releases">https://github.com/Molunerfinn/picgo/releases</a></p>
-<h3 id="2-创建GitHub仓库"><a href="#2-创建GitHub仓库" class="headerlink" title="2.创建GitHub仓库"></a>2.创建GitHub仓库</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOEIH.png"><br>点自己头像，点Setting<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOx0S.png"></p>
-<p>再点Developer settings<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nOzTg.jpg"></p>
-<p>再点Personal access tokens<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXpkQ.png"></p>
-<p>填写内容，记得勾选repo<br><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/8nXCfs.png"></p>
-<p>复制生成的token,（再关闭网页这个token就没法复制了）</p>
-<h3 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h3><p><img src="https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/20230704220025.png"></p>
-<h3 id="加速访问"><a href="#加速访问" class="headerlink" title="加速访问"></a>加速访问</h3><p>大家可能会发现，我们上传到 Github 的图片有时候访问太慢了，有时候甚至直接加载不出来！那该咋办呢？</p>
-<p>这时候我们就可以用 <a href="https://link.zhihu.com/?target=https://www.jsdelivr.com/">jsDelivr</a> 进行免费加速，而设置的方法也很简单，只需要在我们 PicGo 图床配置中添加如下自定义域名即可；</p>
-<blockquote>
-<p><code>https://cdn.jsdelivr.net/gh/用户名/仓库名</code></p>
-</blockquote>
 ]]></content>
       <categories>
         <category>GitHub</category>

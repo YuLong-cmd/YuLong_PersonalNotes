@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>扩展运算符</title>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      // 1.认识 扩展运算符
+      // ES6 【...】 扩展运算符 能将【数组】转换为逗号分隔的【参数序列】
+      // 声明一个数组
+      const arr = ["A", "C", "B"]; //【数组】
+      // => 'A','C','B'   【参数序列】
+
+      // 声明一个函数
+      function chang() {
+        console.log(arguments);
+      }
+      chang(...arr); //chang('A','C','B')   【参数序列】
+      chang(arr);
+
+      // 2.扩展运算符的应用
+      // 1).数组的合并
+      const AArr = ["A", "C", "B"];
+      const BArr = ["D", "E", "F"];
+      const CArr = AArr.concat(AArr);
+      console.log(CArr);
+      const DArr = [...AArr, ...BArr];
+      console.log(DArr);
+      // 2).数组的克隆
+      const KArr = ["H", "Y", "Z"];
+      const YArr = [...KArr];
+      console.log(YArr);
+
+      // 3).将伪类数组转换为真正的数组
+      const divs=document.querySelectorAll('div');
+      console.log(divs);
+      const divArr = [...divs];
+      console.log(divArr);
+
+    </script>
+  </body>
+</html>

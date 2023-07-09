@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      // ES6 允许给函数参数赋初始值
+      // 1.形参初始值 具有默认值的参数，一般位置要靠后(潜规则)
+      function add(a, b, c = 123) {
+        return a + b + c;
+      }
+      console.log(add(1, 2));
+
+    //   2.与解构赋值结合
+    function connrct({host='127.0.0.1',username,password,port}){
+        console.log(host);
+        console.log(username);
+        console.log(password);
+        console.log(port);
+    }
+    connrct({
+        // host:"百度.com",
+        username:"root",
+        password:"root",
+        port:8080
+    });
+    </script>
+  </body>
+</html>
