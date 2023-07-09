@@ -6,20 +6,19 @@ function cvdisplay() {
     }
 }
 cvdisplay()
-let theme = 'light'
+let theme = document.getElementsByTagName('html')[0].getAttribute('data-theme');
 // 为白天黑夜模式添加监听事件   日常模式和暗黑模式之间切换的优化
 document.getElementById('darkmode').addEventListener('click', function () {
     if (theme === 'light') {
-        theme = 'dark'
+        // theme = 'dark'
         document.getElementById('universe').style.display = "";
         document.getElementById('body-wrap').style.background = "none";
     } else {
-        theme = 'light'
+        // theme = 'light'
         document.getElementById('universe').style.display = "none";//暗黑模式的canvas画布
         document.getElementById('body-wrap').style.background = "";//日常模式的背景图片
     }
 })
-
 
 function dark() {
     window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
