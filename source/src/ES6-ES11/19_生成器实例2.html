@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>生成器实例2</title>
+  </head>
+  <body>
+    <script>
+      // 模拟获取用户数据 订单数据 商品数据
+      function getUsers() {
+        setTimeout(() => {
+          let date = "用户数据";
+          // console.log(date);
+          iterator.next(date);
+        }, 1000);
+      }
+      function getOrders() {
+        setTimeout(() => {
+          let date = "订单数据";
+          // console.log(date);
+          iterator.next(date);
+        }, 1000);
+      }
+      function getShion() {
+        setTimeout(() => {
+          let date = "商品数据";
+          // console.log(date);
+          iterator.next(date);
+        }, 1000);
+      }
+
+      function* gen(params) {
+        let a = yield getUsers();
+        console.log(a);
+        let b = yield getOrders();
+        console.log(b);
+        let c = yield getShion();
+        console.log(c);
+      }
+      // 调用生成器函数
+      let iterator = gen();
+      iterator.next();
+    </script>
+  </body>
+</html>

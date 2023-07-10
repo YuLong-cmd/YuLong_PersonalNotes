@@ -316,10 +316,3 @@ class Person{
 2.更多Symbol参数认识
 [Symbol - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
-
-hexo init "鱼有个梦想的个人博客" # 目录名称不含空格的时候双引号可以省略
-hexo : 无法加载文件 C:\Users\26524\AppData\Roaming\npm\hexo.ps1，因为在此系统上禁止运行脚本。有关详细信息，请参阅 https
-:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
-所在位置 行:1 字符: 1
-+ hexo init "鱼有个梦想的个人博客" # 目录名称不含空格的时候双引号可以省略
-![[Pasted image 20230618162528.png]]
