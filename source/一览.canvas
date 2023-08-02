@@ -1,0 +1,39 @@
+{
+	"nodes":[
+		{"type":"text","text":"Tool  工具","id":"d4d431e775079874","x":-360,"y":450,"width":170,"height":60},
+		{"type":"text","text":"其他 ","id":"ced59a4352dbeddd","x":589,"y":450,"width":120,"height":60},
+		{"type":"text","text":"后端","id":"5a52b2bd488249aa","x":-969,"y":460,"width":130,"height":50},
+		{"type":"text","text":"前端","id":"b20d36a7e0e8c091","x":-1701,"y":450,"width":125,"height":60},
+		{"type":"file","file":"_posts/ES6-ES11笔记.md","id":"2d22b1e608a56470","x":-2280,"y":967,"width":400,"height":399},
+		{"type":"file","file":"_posts/SpringBoot核心功能.md","id":"d1ada281e6613de5","x":-1743,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/SpringBoot基础入门.md","id":"c2725e79a23b9cfb","x":-1206,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/软件.md","id":"4c9a36c94bc6fbb9","x":-132,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/代码片段.md","id":"b9149eac97c63456","x":942,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/常用/本地项目让别人可以被访问.md","id":"312fdc2de3f3a8ad","x":405,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/常用/常用.md","id":"d9f6a90d560d057f","x":1480,"y":966,"width":400,"height":400},
+		{"type":"file","file":"_posts/常用/图床.md","id":"4d4701c860e05952","x":-669,"y":966,"width":400,"height":400},
+		{"type":"text","text":"知识","id":"e093b220bda4401b","x":-553,"y":-680,"width":110,"height":60,"color":"#936c6c"},
+		{"type":"text","text":"Java","id":"0a93bf48837e5ef5","x":-969,"y":680,"width":100,"height":60},
+		{"type":"text","text":"HTML","id":"9cd412868832009c","x":-1332,"y":680,"width":125,"height":60},
+		{"type":"text","text":"JS","id":"e10362d0a060e877","x":-2010,"y":680,"width":90,"height":60},
+		{"type":"text","text":"CSS","id":"61912eb51eb6ad39","x":-1681,"y":680,"width":110,"height":60}
+	],
+	"edges":[
+		{"id":"a96c0d678182785b","fromNode":"e093b220bda4401b","fromSide":"bottom","toNode":"b20d36a7e0e8c091","toSide":"top"},
+		{"id":"2a8eb275048a7f26","fromNode":"e093b220bda4401b","fromSide":"bottom","toNode":"5a52b2bd488249aa","toSide":"top"},
+		{"id":"eab8d934e5ff930d","fromNode":"b20d36a7e0e8c091","fromSide":"bottom","toNode":"e10362d0a060e877","toSide":"top"},
+		{"id":"f4398d0d5f2a8934","fromNode":"b20d36a7e0e8c091","fromSide":"bottom","toNode":"61912eb51eb6ad39","toSide":"top"},
+		{"id":"2d6240e2f6c4c74d","fromNode":"b20d36a7e0e8c091","fromSide":"bottom","toNode":"9cd412868832009c","toSide":"top"},
+		{"id":"6a2558eeab421621","fromNode":"5a52b2bd488249aa","fromSide":"bottom","toNode":"0a93bf48837e5ef5","toSide":"top"},
+		{"id":"bd11a53b96c82bf5","fromNode":"e093b220bda4401b","fromSide":"bottom","toNode":"d4d431e775079874","toSide":"top"},
+		{"id":"6b2ecedb3a15d474","fromNode":"e093b220bda4401b","fromSide":"bottom","toNode":"ced59a4352dbeddd","toSide":"top"},
+		{"id":"44e6b965c76f1dfc","fromNode":"e10362d0a060e877","fromSide":"bottom","toNode":"2d22b1e608a56470","toSide":"top"},
+		{"id":"ce8fbed4f894ba64","fromNode":"0a93bf48837e5ef5","fromSide":"bottom","toNode":"d1ada281e6613de5","toSide":"top"},
+		{"id":"2b6fb5d0d406787d","fromNode":"0a93bf48837e5ef5","fromSide":"bottom","toNode":"c2725e79a23b9cfb","toSide":"top"},
+		{"id":"8d072c9971d6ddf5","fromNode":"d4d431e775079874","fromSide":"bottom","toNode":"4c9a36c94bc6fbb9","toSide":"top"},
+		{"id":"d508a957703022f3","fromNode":"ced59a4352dbeddd","fromSide":"bottom","toNode":"b9149eac97c63456","toSide":"top"},
+		{"id":"e31873274352f5c2","fromNode":"ced59a4352dbeddd","fromSide":"bottom","toNode":"312fdc2de3f3a8ad","toSide":"top"},
+		{"id":"99c428bd647dad8d","fromNode":"ced59a4352dbeddd","fromSide":"bottom","toNode":"d9f6a90d560d057f","toSide":"top"},
+		{"id":"809bfb61e25eda6b","fromNode":"d4d431e775079874","fromSide":"bottom","toNode":"4d4701c860e05952","toSide":"top"}
+	]
+}
