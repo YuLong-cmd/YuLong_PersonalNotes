@@ -316,3 +316,63 @@ class Person{
 2.更多Symbol参数认识
 [Symbol - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
+### 20.promise方法的认识
+ 1.Promise 异步操作有三种状态：pending（进行中）、fulfilled（已成功）和 rejected（已失败）。除了异步操作的结果，任何其他操作都无法改变这个状态。
+
+
+``` JS
+// 实例化 Promise 对象   定义
+        const p =new Promise(function(resolve,reject) {
+            // resolve  成功
+            // reject   失败 
+            // 成功和失败不会同时进行
+            setTimeout(function() {
+                let date= '数据库中的用户数据';
+                resolve(date);
+
+                let err= '出错了';
+                reject(err);
+            },1000);
+        });
+
+        // 调用 promise 对象的 then 方法
+        p.then(function(value){
+            console.log('成功：'+value);
+        },function(reason){
+            console.error(reason);
+        });
+```
+
+
+2.使用 promise  读取文件
+结构目录
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/202308032335074.png)
+
+```JS
+// 1.首先引入 fs 模块   前提条件  安装 node.js
+const fs = require('fs');
+
+// 2.调用方法读取文件
+// fs.readFile('./21_promise读取文件/倔强.md', (err, date) => {
+//     // 如果失败，则抛出错误
+//     if (err) throw err;
+//     // 如果成功，则输出内容  date  单纯的它是一个buffer对象  <Buffer e9 80 86 e9 a3 8e e7 9a 84 e6 96 b9 e5 90 91 20 e6 9b b4 e9 80 82 e5 90 88 e9 a3 9e e7 bf 94 0d 0a e6 88 91 e4 b8 8d e6 80 95 e5 8d 83 e4 b8 87 e4 ba ... 71 more bytes>
+//     console.log(date.toString());
+// });
+
+// 3.使用Promise 封装
+const p= new Promise(function(resolve,reject){
+    fs.readFile('./21_promise读取文件/倔强.md', (err, date) => {
+        // 判断如果失败
+        if (err) reject(err);
+        // 如果成功
+        resolve(date);
+    });
+});
+
+p.then(function(value){
+    console.log(value.toString());
+},function(reason){
+    console.log('读取失败：' + reason);
+});
+```
