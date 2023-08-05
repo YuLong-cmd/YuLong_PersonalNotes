@@ -317,6 +317,7 @@ class Person{
 [Symbol - JavaScript | MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Symbol)
 
 ### 20.promise方法的认识
+#### 1.promise的基础认知
  1.Promise 异步操作有三种状态：pending（进行中）、fulfilled（已成功）和 rejected（已失败）。除了异步操作的结果，任何其他操作都无法改变这个状态。
 
 
@@ -375,4 +376,41 @@ p.then(function(value){
 },function(reason){
     console.log('读取失败：' + reason);
 });
+```
+#### 2.promise的案例
+使用Promise封装 AJAX
+api  已经失效
+
+```JS
+const p = new Promise(function (resove, reject) {
+        // 1. 创建对象
+        const xhr = new XMLHttpRequest();
+        // 2.初始化
+        xhr.open("GET", "https://api.apiopen.top/getJoke");
+        // 3.发送
+        xhr.send();
+        // 4.绑定事件，处理响应结果
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            // 判断响应状态码 200-299
+            if (xhr.status >= 200 && xhr.status < 300) {
+              // 表示成功
+              resove(xhr.response);
+            } else {
+              // 如果失败
+              reject(xhr.status);
+            }
+          }
+        };
+      });
+
+      p.then(
+        function (value) {
+          console.log(value);
+        },
+        function (reason) {
+          console.error(reason);
+        }
+      );
+
 ```
