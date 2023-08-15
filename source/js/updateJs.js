@@ -15,7 +15,7 @@ main();
 
 function main() {
     let allFiles = getAllFiles('D:\\桌面\\YuLong_PersonalNotes_gitee\\source\\_posts');
-    let paramsList=[];
+    let paramsList = [];
     console.log(`文件数量:${allFiles.length}`);
     for (let i = 0; i < allFiles.length; i++) {
         console.log(allFiles[i]);
@@ -23,19 +23,67 @@ function main() {
         let content = fs.readFileSync(allFiles[i]).toString();
         // 文件名字
         let name = allFiles[i].substring(allFiles[i].toString().lastIndexOf('/') + 1);
-        // 更新时间
-        let date = content.substring(content.indexOf("updated:") + 8, content.indexOf("tags") - 2);
+        // 更新时间   文件最近一次修改的时间戳
+        const stat = fs.statSync(allFiles[i])
+        let date = stat.mtime
+        // 要被替换掉的更新时间
+        let sourceRegx = content.substring(content.indexOf("updated:") + 8, content.indexOf("tags") - 1);
 
         let params = {
             "id": ulid.ulid(),
             "name": name,
-            "date": date
-        }
+            "date": date,
+            "sourceRegx": sourceRegx
+        };
         paramsList.push(params);
         console.log(params);
     }
 
+    // 初次JSON数据生成
     writeJson(paramsList);
+
+    // 确认对那几个文件进行时间的替换
+    //先将json文件读出来
+    fs.readFile(dataJson, function (err, data) {
+        if (err) {
+            return console.error(err);
+        }
+        let person = data.toString();//将二进制的数据转换为字符串
+        person = JSON.parse(person);//将字符串转换为json对象
+
+        for (let i = 0; i < person.data.length; i++) {
+            let element = person.data[i];
+            let stat;
+            let dateTime = getDateTime();
+            for (let j = 0; j < allFiles.length; j++) {
+                stat = fs.statSync(allFiles[j]);
+                // 文件名字
+                let name = allFiles[j].substring(allFiles[j].toString().lastIndexOf('/') + 1);
+                // 文件相同
+                if (element.name === name) {
+                    // 比较最近一次的修改时间
+                    if (stat.mtime != element.data) {
+                        // 最近一次的修改时间不相同  则说明  该文件的  更新时间需要 被更新
+                        // 当前时间
+                        replaceFile(allFiles[j], element.sourceRegx, dateTime);
+                    }
+                }
+            }
+            element.date = stat.mtime;
+            element.sourceRegx = dateTime;
+        }
+
+        let str = JSON.stringify(person);
+        fs.writeFile(dataJson, str, function (err) {
+            if (err) {
+                console.error(err);
+            }
+            console.log('----------修改成功-------------');
+        })
+
+    });
+
+
 }
 
 
@@ -44,7 +92,6 @@ function main() {
  */
 function getAllFiles(filePath) {
     let allFilePaths = [];
-    let bllFilePaths = [];
     if (fs.existsSync(filePath)) {
         const files = fs.readdirSync(filePath);
         for (let i = 0; i < files.length; i++) {
@@ -55,7 +102,6 @@ function getAllFiles(filePath) {
 
                 if (stats.isDirectory()) {
                     allFilePaths = allFilePaths.concat(getAllFiles(currentFilePath));
-                    //bllFilePaths = bllFilePaths.concat(getAllFiles(currentFilePath));
                 } else {
                     allFilePaths.push(currentFilePath);
                 }
@@ -71,8 +117,12 @@ function getAllFiles(filePath) {
 }
 
 
+
 //写入json文件选项
 function writeJson(params) {
+
+    let strS = [];
+
     //现将json文件读出来
     fs.readFile(dataJson, function (err, data) {
         if (err) {
@@ -80,18 +130,24 @@ function writeJson(params) {
         }
         let person = data.toString();//将二进制的数据转换为字符串
         person = JSON.parse(person);//将字符串转换为json对象
-        for (let i = 0; i < person.data.length; i++) {
-            let flg = true;
-            let element = person.data[i];
-            for (let j = 0; j < params.length;j++){
-                if (element.name === params[j].name) {
-                    flg = false;
+        for (let j = 0; j < params.length; j++) {
+
+            let element = params[j];
+            let count = 0;
+            for (let i = 0; i < person.data.length; i++) {
+                if (element.name != person.data[i].name) {
+                    count++;
                 }
-                if (flg) {
-                    person.data.push(params[j]);//将传来的对象push进数组对象中
+                if (count === person.data.length) {
+                    strS.push(params[j]);//将传来的对象push进数组对象中
                     console.log(person.data);
                 }
+
             }
+        }
+        for (let index = 0; index < strS.length; index++) {
+            const element = strS[index];
+            person.data.push(element);
         }
         let str = JSON.stringify(person);//因为nodejs的写入文件只认识字符串或者二进制数，所以把json对象转换成字符串重新写入json文件中
         fs.writeFile(dataJson, str, function (err) {
@@ -104,7 +160,24 @@ function writeJson(params) {
 
     })
 }
-
+let getDateTime =function(){
+    // var myDate = new Date();
+    // myDate.getYear();  //获取当前年份(2位)
+    // myDate.getFullYear(); //获取完整的年份(4位,1970-????)
+    // myDate.getMonth();  //获取当前月份(0-11,0代表1月)
+    // myDate.getDate();  //获取当前日(1-31)
+    // myDate.getDay();   //获取当前星期X(0-6,0代表星期天)
+    // myDate.getTime();  //获取当前时间(从1970.1.1开始的毫秒数)
+    // myDate.getHours();  //获取当前小时数(0-23)
+    // myDate.getMinutes();  //获取当前分钟数(0-59)
+    // myDate.getSeconds();  //获取当前秒数(0-59)
+    // myDate.getMilliseconds(); //获取当前毫秒数(0-999)
+    // myDate.toLocaleDateString();  //获取当前日期
+    // myDate.toLocaleString();  //获取日期与时间
+    let newDate = new Date();
+    newDate.toLocaleString()
+    return newDate.toUTCString();
+}
 
 //=================================================================================
 
@@ -152,8 +225,12 @@ let replaceFile = function (filePath, sourceRegx, targetStr) {
 
 //=================================================================================
 
+// 参考知识
+
 // fs 常用的一些 方法解释
 // https://juejin.cn/post/6955011872298893319
 
 // JSON  文件的本地读写操作
 // https://blog.csdn.net/zhaoxiang66/article/details/79894209
+
+// https://blog.csdn.net/weixin_44683094/article/details/118308268
