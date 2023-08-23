@@ -414,3 +414,48 @@ const p = new Promise(function (resove, reject) {
       );
 
 ```
+
+
+### 23 Promise的Then方法
+
+
+```JS
+<script>
+      // 创建Promise对象
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("用户数据");
+        }, 1000);
+      });
+      //   调用Then方法   Then方法的返回结果是Promise对象， 对象状态由回调函数的执行结果决定
+      // 1.如果回调函数的返回结果是 非 Promise 类型的属性，状态为成功
+      const result = p.then(
+        (value) => {
+          console.log(value);
+          // 1.非promise 类型的属性
+          // return "66666";
+          // 2.是 promise 类型的 对象
+          // return new Promise((resolve,reject)=>{
+          //     resolve("OK");
+          //     reject("error");
+          // })
+          // 3. 抛出错误
+          // throw new Error('出错了');
+          throw "出错了";
+        },
+        (reason) => {
+          console.warn(reason);
+        }
+      );
+
+      //   2. 链式调用   可用于解决  回调地狱
+      p.then(
+        (value) => {},
+        (reason) => {}
+      ).then(
+        (value) => {},
+        (reason) => {}
+      );
+      console.log(result);
+    </script>
+```
