@@ -2,7 +2,7 @@
 
 title: ES6-ES11笔记
 date: 2023-07-04 17:25
-updated: 2023-07-04 17:25
+updated: 2023-08-27 23:29
 tags: JS ES6
 categories: JS 
 keywords: ES6
@@ -458,4 +458,48 @@ const p = new Promise(function (resove, reject) {
       );
       console.log(result);
     </script>
+```
+
+### 24 Promise的实例实践
+
+```js
+
+// 1.首先引入 fs 模块   前提条件  安装 node.js
+const fs = require('fs');
+
+//目标 读取三个文件
+// 1.回调地狱的写法
+fs.readFile('./promise读取文件/倔强.md',(error1,data1)=>{
+    fs.readFile('./promise读取文件/后青春期的诗.md',(error2, data2)=> {
+        fs.readFile('./promise读取文件/知足.md', (error3, data3) => {
+            let result  = data1 +'\r\n' + data2 +'\r\n' +data3;
+            console.log(result);
+        });
+    });
+});
+
+
+// 2.promise 方式实现
+const p = new Promise((resolve, reject) => {
+    fs.readFile('./promise读取文件/知足.md', (error, data) => {
+        resolve(data);
+    });
+});
+
+p.then((value, reason) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./promise读取文件/后青春期的诗.md', (error, data) => {
+            resolve([value, data]);
+        });
+    });
+}).then((value, reson) => {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./promise读取文件/倔强.md', (error, data) => {
+            value.push(data);
+            resolve(value);
+        });
+    });
+}).then((value, reson) => {
+    console.log(value.join('\r\n'));
+});
 ```
