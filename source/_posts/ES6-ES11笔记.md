@@ -503,3 +503,101 @@ p.then((value, reason) => {
     console.log(value.join('\r\n'));
 });
 ```
+
+### 25   Promise的catch
+
+```JS
+const p =new Promise((resovle,reject)=>{
+        setTimeout(()=>{
+            // 设置p对象的状态为失败，并设置失败的值
+            reject("出错了");
+        },1000);
+       });
+
+       p.then((value)=>{
+        console.log(value);
+       },(reson)=>{
+         console.warn(reson);
+       });
+
+    // catch  是当promise出现异常  终止时使用的   也可以使用  then 的方式进行替代  then  有两个参数  一个是成功一个是失败  失败的场合  类似于异常
+    p.catch(function(reson){
+        console.warn(reson);
+    });
+
+```
+
+### 26  ES6集合的认识
+```JS
+// Set   ES6  提供了新的数据结构 set 集合  它类似于数组，但成员变量的值是唯一的，集合实现了iterator接口  所以可以使用 扩展运算符 和 for  of 进行遍历主要方法有：
+        // size  返回集合元素的个数
+        // add  增加一个新元素返回当前集合
+        // delete 删除元素 返回布尔值
+        // has 检测集合中是否包含某个元素，返回boolean值
+
+        // 1.声明一个set
+        let s =new Set();
+        let s2 = new Set(['a','c','b','d','s','f','g']);
+
+        // 元素个数
+        console.log(s2.size);
+        // 添加新元素
+        console.log(s2.add('6666'));
+        // 删除元素
+        s2.delete('b');
+        console.log(s2);
+        // 检测
+        console.log(s2.has('g'));
+        // 清空
+        console.log(s2.clear);
+
+        for(let v of s2){
+            console.log(v);
+        }
+
+```
+
+### 27 Es6  集合的实践
+
+```JS
+let arr = [1, 2, 3, 4, 5, 4, 3, 2, 1];
+      let arr2 = [4, 5, 4];
+      1.数组去重
+      let arrdis = [...new Set(arr)];
+      console.log(arrdis);
+      2.交集
+        let result1 = [...new Set(arr)];
+        let result = result1.filter((item) => {
+          let result2 = new Set(arr2);
+          if (result2.has(item)) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        //   简写
+        let result2 = result1.filter((item) => new Set(arr2).has(item));
+        console.log(result);
+        console.log(result2);
+
+      3.并集
+      let result = [...new Set([...arr,...arr2])];
+      console.log(result);
+
+      4.差集
+      let result = [...new Set(arr)].filter((item) => !new Set(arr2).has(item));
+        console.log(result);
+```
+
+结果：
+Set集合实践_并集
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/27_Set%E9%9B%86%E5%90%88%E5%AE%9E%E8%B7%B5_%E5%B9%B6%E9%9B%86.png)
+
+Set集合实践_数组去重
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/27_Set%E9%9B%86%E5%90%88%E5%AE%9E%E8%B7%B5_%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D.png)
+
+Set集合实践_交集
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/27_Set%E9%9B%86%E5%90%88%E5%AE%9E%E8%B7%B5_%E4%BA%A4%E9%9B%86.png)
+
+Set集合实践_差集
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/27_Set%E9%9B%86%E5%90%88%E5%AE%9E%E8%B7%B5_%E5%B7%AE%E9%9B%86.png)
