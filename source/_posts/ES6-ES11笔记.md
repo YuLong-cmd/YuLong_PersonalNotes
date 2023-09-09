@@ -601,3 +601,55 @@ Set集合实践_交集
 
 Set集合实践_差集
 ![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/27_Set%E9%9B%86%E5%90%88%E5%AE%9E%E8%B7%B5_%E5%B7%AE%E9%9B%86.png)
+
+### 28 Map集合
+
+
+```JS
+// Map的认识
+        // map类似于对象，也是键值对的集合 但键的范围不在局限于字符串，各种类型的值（包括对象）都可以作为键。map也实现；额iterator接口，所以可以使用扩展运算符和 for...of.. 进行遍历。
+        // map 的属性和方法：
+        // 1.size 返回map的元素个数
+        // 2. set 增加一个新元素，返回当前的map
+        // 3.get 返回键名对象的键值
+        // 4.has 检测Map中是否包含某个元素返回boolean值
+        // 5.clear 清空集合 返回 undefined
+        // 6.delete 删除map里面的某个元素  返回boolean值
+
+        // 1.声明map
+        let m=new Map();
+        // 添加元素
+        m.set('name','光');
+        m.set('change',function(){
+            console.log('map 里面的一个方法');
+        });
+        let key ={
+            name:'迪迦'
+        };
+        m.set(key,'66666');
+
+        // for of 
+        console.log('-------for of ------');
+        for(let v of m){
+            console.log(v);
+        }
+        // size
+        console.log('-------size------');
+        console.log(m.size);
+        // 删除
+        console.log('-------删除------');
+        console.log(m.delete('name'));
+        console.log(m);
+        // 获取
+        console.log('-------获取------');
+        console.log(m.get('change'));
+        console.log(m.get(key));
+        // 清除
+        console.log('-------清除------');
+        console.log(m.clear());
+        console.log(m);
+        
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/28_Map%E9%9B%86%E5%90%88.png)
