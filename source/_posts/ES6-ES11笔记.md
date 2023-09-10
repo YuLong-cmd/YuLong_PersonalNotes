@@ -653,3 +653,48 @@ Set集合实践_差集
 
 运行结果：
 ![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/28_Map%E9%9B%86%E5%90%88.png)
+
+29 Class 类 
+
+```JS
+// Es6 class类可以 看做只是一个语法糖，它的绝大部分功能，Es5都可以做到，新的class写法只是让对象原型的写法更加清晰，更像面向对象编程的语法而已。
+      // 1.class 声明类
+      // 2.constructor 定义函数初始化
+      // 3.extends 继承父类
+      // 4.super 调用父类构造方法
+      // 5.static 定义静态方法和属性
+      // 6.父类方法可以重写
+
+      // 1.Es5 原型形式
+      function Phone(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+      // 添加方法
+      Phone.prototype.call = function () {
+        console.log("我是一部手机");
+      };
+      // 实例化对象
+      let huawei = new Phone("华为", 5999);
+      huawei.call();
+      console.log(huawei);
+
+      // 2.class
+      class shouji {
+        // 构造方法 名字不能修改
+        constructor(brand, price) {
+          this.brand = brand;
+          this.price = price;
+        }
+        // 方法必须使用该语法，不能使用Es5 的对象完整形式
+        call() {
+          console.log("1+", 66666);
+        }
+      }
+      let onePhone = new shouji("1+", 666);
+      onePhone.call();
+      console.log(onePhone);
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/29_Class%E8%AE%A4%E8%AF%86.png)
