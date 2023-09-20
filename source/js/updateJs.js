@@ -15,35 +15,14 @@ main();
 
 function main() {
     let allFiles = getAllFiles('D:\\桌面\\YuLong_PersonalNotes_gitee\\source\\_posts');
-    let paramsList = [];
+
     console.log(`文件数量:${allFiles.length}`);
-    for (let i = 0; i < allFiles.length; i++) {
-        console.log(allFiles[i]);
-        // 同步读取文件内容
-        let content = fs.readFileSync(allFiles[i]).toString();
-        // 文件名字
-        let name = allFiles[i].substring(allFiles[i].toString().lastIndexOf('/') + 1);
-        // 更新时间   文件最近一次修改的时间戳
-        const stat = fs.statSync(allFiles[i])
-        let date = stat.mtime
-        // 要被替换掉的更新时间
-        let sourceRegx = content.substring(content.indexOf("updated:") + 8, content.indexOf("tags") - 1);
 
-        let params = {
-            "id": ulid.ulid(),
-            "name": name,
-            "date": date,
-            "sourceRegx": sourceRegx
-        };
-        paramsList.push(params);
-        console.log(params);
-    }
-
-    // 初次JSON数据生成
-    writeJson(paramsList);
+    // 初始数据初创
+    // oneDateCreat(allFiles);
 
     // 确认对那几个文件进行时间的替换
-    //先将json文件读出来
+    // 先将json文件读出来
     fs.readFile(dataJson, function (err, data) {
         if (err) {
             return console.error(err);
@@ -62,7 +41,7 @@ function main() {
                 // 文件相同
                 if (element.name === name) {
                     // 比较最近一次的修改时间
-                    if (stat.mtime != element.data) {
+                    if (stat.ctime != element.data && stat.size != element.size) {
                         // 最近一次的修改时间不相同  则说明  该文件的  更新时间需要 被更新
                         // 当前时间
                         replaceFile(allFiles[j], element.sourceRegx, dateTime);
@@ -84,6 +63,38 @@ function main() {
     });
 
 
+}
+
+function oneDateCreat(allFiles) {
+    let paramsList = [];
+    // 初次获取文件列表以及文件最后一次的修改时间
+    for (let i = 0; i < allFiles.length; i++) {
+        console.log(allFiles[i]);
+        // 同步读取文件内容
+        let content = fs.readFileSync(allFiles[i]).toString();
+        // 文件名字
+        let name = allFiles[i].substring(allFiles[i].toString().lastIndexOf('/') + 1);
+        // 更新时间   文件最近一次修改的时间戳
+        const stat = fs.statSync(allFiles[i])
+        let date = stat.ctime
+        // 要被替换掉的更新时间
+        let sourceRegx = content.substring(content.indexOf("updated:") + 8, content.indexOf("tags") - 1);
+        // 文件大小
+        let size = stat.size;
+
+        let params = {
+            "id": ulid.ulid(),
+            "name": name,
+            "date": date,
+            "sourceRegx": sourceRegx.replace("\r",""),
+            "size": size
+        };
+        paramsList.push(params);
+        console.log(params);
+    }
+
+    // 初次JSON数据生成
+    writeJson(paramsList);
 }
 
 
@@ -160,23 +171,19 @@ function writeJson(params) {
 
     })
 }
-let getDateTime =function(){
-    // var myDate = new Date();
-    // myDate.getYear();  //获取当前年份(2位)
-    // myDate.getFullYear(); //获取完整的年份(4位,1970-????)
-    // myDate.getMonth();  //获取当前月份(0-11,0代表1月)
-    // myDate.getDate();  //获取当前日(1-31)
-    // myDate.getDay();   //获取当前星期X(0-6,0代表星期天)
-    // myDate.getTime();  //获取当前时间(从1970.1.1开始的毫秒数)
-    // myDate.getHours();  //获取当前小时数(0-23)
-    // myDate.getMinutes();  //获取当前分钟数(0-59)
-    // myDate.getSeconds();  //获取当前秒数(0-59)
-    // myDate.getMilliseconds(); //获取当前毫秒数(0-999)
-    // myDate.toLocaleDateString();  //获取当前日期
-    // myDate.toLocaleString();  //获取日期与时间
-    let newDate = new Date();
-    newDate.toLocaleString()
-    return newDate.toUTCString();
+let getDateTime = function () {
+    // var myDa
+    let newDate = new Date()
+    // timer.toLocaleString()) // 日期+时间 2023/5/28 23:07:35
+    let year = newDate.getFullYear().toString().padStart(4, '0'); // 年 2023
+    let month = (newDate.getMonth() + 1).toString().padStart(2, '0'); // 月 05
+    let date = newDate.getDate().toString().padStart(2, '0'); // 日 29
+    // ('星期' + (newDate.getDay() === 0 ? 7 : newDate.getDay())) // 周 星期1
+    let hours = newDate.getHours().toString().padStart(2, '0');// 时 01
+    let minutes = newDate.getMinutes().toString().padStart(2, '0'); // 分 19
+    let seconds = newDate.getSeconds().toString().padStart(2, '0');// 秒 55
+    let time = year + "-" + month + "-" + date + " " + hours + ":" + minutes;
+    return time;
 }
 
 //=================================================================================
