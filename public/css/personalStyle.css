@@ -204,3 +204,10 @@ img {
     background-color: transparent;
   }
 }
+
+
+/* 侧边栏  公告简介 */
+.announcement_content{
+  /* font-size: 5px; */
+  color: rgb(255, 0, 81);
+}

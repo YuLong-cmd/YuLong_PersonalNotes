@@ -111,3 +111,12 @@ error_404:
   enable: true
   subtitle: "頁面沒有找到"
   background: 
+# offline config passed to sw-precache.
+#https://blog.csdn.net/weixin_58068682/article/details/116613947?spm=1001.2101.3001.6650.3&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-116613947-blog-104555777.235%5Ev38%5Epc_relevant_anti_t3&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-3-116613947-blog-104555777.235%5Ev38%5Epc_relevant_anti_t3&utm_relevant_index=6
+service_worker:
+  maximumFileSizeToCacheInBytes: 5242880
+  staticFileGlobs:
+  - public/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff,woff2}
+  stripPrefix: public
+  verbose: true
+
