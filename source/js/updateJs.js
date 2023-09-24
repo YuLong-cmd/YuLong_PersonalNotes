@@ -41,15 +41,15 @@ function main() {
                 // 文件相同
                 if (element.name === name) {
                     // 比较最近一次的修改时间
-                    if (stat.ctime != element.data && stat.size != element.size) {
+                    if (stat.size != element.size) {
                         // 最近一次的修改时间不相同  则说明  该文件的  更新时间需要 被更新
                         // 当前时间
-                        replaceFile(allFiles[j], element.sourceRegx, dateTime);
+                        replaceFile(allFiles[j], "updated: " +element.sourceRegx, "updated: "+dateTime);
+                        element.date = stat.mtime;
+                        element.sourceRegx = dateTime;
                     }
                 }
             }
-            element.date = stat.mtime;
-            element.sourceRegx = dateTime;
         }
 
         let str = JSON.stringify(person);
