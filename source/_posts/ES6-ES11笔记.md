@@ -654,7 +654,7 @@ Set集合实践_差集
 运行结果：
 ![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/28_Map%E9%9B%86%E5%90%88.png)
 
-29 Class 类 
+### 29 Class 类 
 
 ```JS
 // Es6 class类可以 看做只是一个语法糖，它的绝大部分功能，Es5都可以做到，新的class写法只是让对象原型的写法更加清晰，更像面向对象编程的语法而已。
@@ -698,3 +698,46 @@ Set集合实践_差集
 
 运行结果：
 ![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/29_Class%E8%AE%A4%E8%AF%86.png)
+
+### 30 Class 静态成员
+
+
+```JS
+ // Es5
+        function Phone() {
+            
+        }
+        Phone.name ="手机";
+        Phone.change=function(){
+            console.log("光锥之内皆是命运");
+        }
+        Phone.prototype.size="5.5inch";
+        console.log(Phone);
+        console.log(Phone.name);
+        console.log(Phone.change());
+        let nakai = new Phone();
+        console.log(nakai.name);
+        nakai.change();
+        console.log(nakai.size);
+
+        // 直接实例化的对象 是无法使用 源对象的 内容  只有通过 prototype 定义的 内容 才能 被实例化对象 使用
+
+        // Es6
+        class Phone {
+            // 静态属性
+            static name ='手机';
+            static change(){
+                console.log("穷则变，变则通");
+            }
+        }
+
+        let nakai =new Phone();
+        console.log(nakai.name);
+        console.log(nakai.change());
+
+        // 通过 static 声明的变量  属于类  而不属于  实例对象
+
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/30_Class%E9%9D%99%E6%80%81%E6%88%90%E5%91%98.png)
