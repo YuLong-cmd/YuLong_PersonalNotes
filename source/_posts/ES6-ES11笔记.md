@@ -741,3 +741,54 @@ Set集合实践_差集
 
 运行结果：
 ![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/30_Class%E9%9D%99%E6%80%81%E6%88%90%E5%91%98.png)
+
+
+### 31.Es5对象继承
+
+```JS
+
+//我们需要牢记两点：①__proto__和constructor属性是对象所独有的；② prototype属性是函数所独有的，因为函数也是一种对象，所以函数也拥有__proto__和constructor属性。
+      // __proto__属性的作用就是当访问一个对象的属性时，如果该对象内部不存在这个属性，那么就会去它的__proto__属性所指向的那个对象（父对象）里找，一直找，直到__proto__属性的终点null，再往上找就相当于在null上取值，会报错。通过__proto__属性将对象连接起来的这条链路即我们所谓的原型链。
+      // prototype属性的作用就是让该函数所实例化的对象们都可以找到公用的属性和方法，即f1.__proto__ === Foo.prototype。
+      // constructor属性的含义就是指向该对象的构造函数，所有函数（此时看成对象了）最终的构造函数都指向Function。
+      // 手机
+      function Phone(brand, price) {
+        this.brand = brand;
+        this.price = price;
+      }
+
+      Phone.prototype.call = function () {
+        console.log("我可以打电话");
+      };
+
+      // 智能手机
+      function SmartPhone(brand, price, color, size) {
+        Phone.call(this, brand, price);
+        this.color = color;
+        this.size = size;
+      }
+
+      // 设置子集构造函数的原型
+      SmartPhone.prototype = new Phone();
+      SmartPhone.prototype.constructor = SmartPhone;
+
+    //   声明子类的方法
+    SmartPhone.prototype.Phone=function(){
+        console.log('我可以拍照');
+    }
+    SmartPhone.prototype.playGame=function(){
+        console.log('我可以打游戏');
+    }
+    const chuizi = new SmartPhone('锤子',2499,'黑色','5.5inch');
+
+    console.log(chuizi);
+    console.log(chuizi.Phone());
+    console.log(chuizi.playGame());
+    console.log(chuizi.call());
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/31_Es5%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF.png)
+
+
+
