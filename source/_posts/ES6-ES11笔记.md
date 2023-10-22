@@ -792,3 +792,89 @@ Set集合实践_差集
 
 
 
+### 32.ES6 类的继承 及子类对父类方法的重写
+
+```JS
+class Phone {
+            // 构造方法
+            constructor(brand,price){
+                this.price=price;
+                this.brand =brand;
+            } 
+            // 父类方法
+            call(){
+                console.log('我能打电话');
+            }
+        }
+
+        class SmartPhone extends Phone {
+            constructor(brand,price,color,size){
+                super(brand,price);
+                this.color=color;
+                this.size=size;
+            }
+            
+            Photo(){
+                console.log('我能拍照');
+            }
+            playGame(){
+                console.log('我能拍照');
+            }
+        }
+
+        const xiaomi = new SmartPhone('小米','3599','黑','4.45in');
+        console.log(xiaomi);
+        xiaomi.Photo();
+        xiaomi.playGame();
+        xiaomi.call();
+
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/32_Es6%E5%AF%B9%E8%B1%A1%E7%BB%A7%E6%89%BF.png)
+
+
+重写
+
+```JS
+class Phone {
+            // 构造方法
+            constructor(brand,price){
+                this.price=price;
+                this.brand =brand;
+            } 
+            // 父类方法
+            call(){
+                console.log('我能打电话');
+            }
+        }
+
+        class SmartPhone extends Phone {
+            constructor(brand,price,color,size){
+                super(brand,price);
+                this.color=color;
+                this.size=size;
+            }
+            
+            Photo(){
+                console.log('我能拍照');
+            }
+            playGame(){
+                console.log('我能拍照');
+            }
+
+            // 子类对父类的同名方法的一个重写   但不能使用  super() 来掉用父类的方法
+            call(){
+                console.log('我可以进行视屏通话');
+            }
+        }
+
+        const xiaomi = new SmartPhone('小米','3599','黑','4.45in');
+        console.log(xiaomi);
+        xiaomi.Photo();
+        xiaomi.playGame();
+        xiaomi.call();
+```
+
+运行结果：
+![](https://cdn.jsdelivr.net/gh/YuLong-cmd/PicGo_Image/img/ES6_32_%E5%AD%90%E7%B1%BB%E5%AF%B9%E7%88%B6%E7%B1%BB%E6%96%B9%E6%B3%95%E7%9A%84%E9%87%8D%E5%86%99.png)
