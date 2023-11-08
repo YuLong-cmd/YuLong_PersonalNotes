@@ -10,7 +10,7 @@ description: ES6 学习笔记
 cover: 
 
 ---
-
+ 
 ### 1.let
 1、变量不能重<font color="#2DC26B">复声明  </font>
 
